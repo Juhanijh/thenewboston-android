@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Your total is: 0" 
+        android:textSize="45dp"
+        android:layout_gravity="center"
+        android:id="@+id/tvTotal"/>
+    
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Add one"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:id="@+id/bAdd"/>
+    
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Substract one"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:id="@+id/bSub"/>
+
+    <AnalogClock
+        android:id="@+id/analogClock1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
