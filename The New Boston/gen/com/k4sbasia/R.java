@@ -21,7 +21,8 @@ public final class R {
         public static final int bRusults=0x7f060006;
         public static final int bSub=0x7f060002;
         public static final int etCommands=0x7f060005;
-        public static final int tvResults=0x7f060007;
+        public static final int tbPassword=0x7f060007;
+        public static final int tvResults=0x7f060008;
         public static final int tvTotal=0x7f060000;
     }
     public static final class layout {
