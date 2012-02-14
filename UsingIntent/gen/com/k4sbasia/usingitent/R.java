@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.k4sbasia.dialog;
+package com.k4sbasia.usingitent;
 
 public final class R {
     public static final class attr {
@@ -14,12 +14,12 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int btn_dialog=0x7f050000;
-        public static final int btn_dialog2=0x7f050001;
-        public static final int btn_dialog3=0x7f050002;
+        public static final int btn_OK=0x7f050001;
+        public static final int txt_username=0x7f050000;
     }
     public static final class layout {
         public static final int main=0x7f030000;
+        public static final int secondactivity=0x7f030001;
     }
     public static final class string {
         public static final int app_name=0x7f040001;
