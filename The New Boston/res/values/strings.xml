@@ -4,5 +4,7 @@
     <string name="hello">Hello World, TheNewBostonActivity!</string>
     <string name="app_name">The New Boston</string>
     <string name="ref">This is a reference</string>
+    <string name="clicableButton">This is a clicable Button</string>
+    <string name="info">This is my first Android Application</string>
 
 </resources>
