@@ -4,11 +4,13 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="15" />
+    <uses-sdk android:minSdkVersion="14" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name" android:debuggable="true">
         <activity
             android:name=".Splash"
             android:label="@string/app_name" >
@@ -27,7 +29,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-          <activity
+        <activity
             android:name=".Menu"
             android:label="@string/app_name" >
             <intent-filter>
@@ -49,9 +51,27 @@
             android:name=".HelloWorldActivity"
             android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="com.k4sbasia.HELLOWORLDACTIVITY"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.k4sbasia.HELLOWORLDACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Email"
+            android:label="@string/app_name" >           
+        </activity>
+        <activity
+            android:name=".Camera"
+            android:label="Camera Application"
+            android:screenOrientation="portrait" >           
+        </activity>
+        <activity
+            android:name=".Data"
+            android:label="Quiz" >           
+        </activity>
+        <activity
+            android:name=".OpenedClass"
+            android:label="Quiz" >           
         </activity>
     </application>
 
