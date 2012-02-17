@@ -8,7 +8,7 @@
 
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:debuggable="true"
@@ -103,6 +103,11 @@
         </activity>
         <activity
             android:name=".GFXSurface"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".SoundStuff"
+            android:label="Sound Stuff"
             android:screenOrientation="portrait" >
         </activity>
     </application>
