@@ -19,12 +19,12 @@ public class Camera extends Activity implements View.OnClickListener {
 	ImageButton ib;
 	Button b;
 	ImageView iv;
-	
+
 	Intent i;
 	final static int cameraData = 0;
 
-	Bitmap bmp ; 
-	
+	Bitmap bmp;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -49,8 +49,9 @@ public class Camera extends Activity implements View.OnClickListener {
 		switch (v.getId()) {
 		case R.id.btSetWallpaper:
 			try {
-				//getApplicationContext().setWallpaper(bmp);
-				WallpaperManager.getInstance(getApplicationContext()).setBitmap(bmp);
+				// getApplicationContext().setWallpaper(bmp);
+				WallpaperManager.getInstance(getApplicationContext())
+						.setBitmap(bmp);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -65,13 +66,12 @@ public class Camera extends Activity implements View.OnClickListener {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		
+
 		if (resultCode == RESULT_OK) {
 			Bundle extras = data.getExtras();
 			bmp = (Bitmap) extras.get("data");
 			iv.setImageBitmap(bmp);
 		}
 	}
-	
-	
+
 }

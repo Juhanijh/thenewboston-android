@@ -46,16 +46,16 @@ public class Email extends Activity implements View.OnClickListener {
 				+ ", that just really makes me crazy.  I just want to make you "
 				+ hatefulAct
 				+ ".  Welp, thats all I wanted to chit-chatter about, oh and"
-				+ out
-				+ ".  Oh also if you get bored you should read a book."
+				+ out + ".  Oh also if you get bored you should read a book."
 				+ '\n' + "PS. I think I love you...   :( ";
-		
+
 		Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 		emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, emailaddress);
-		emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Android test email");
+		emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
+				"Android test email");
 		emailIntent.setType("plain/text");
 		emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, message);
-		startActivity(emailIntent);		
+		startActivity(emailIntent);
 	}
 
 	private void convertEditTextVarsIntoStringsAndYesThisIsAMethodWeCreated() {

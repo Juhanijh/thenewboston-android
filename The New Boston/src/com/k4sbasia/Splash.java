@@ -25,7 +25,7 @@ public class Splash extends Activity {
 
 		if (music == true) {
 			ourSong.start();
-		} 
+		}
 
 		Thread timer = new Thread() {
 			public void run() {

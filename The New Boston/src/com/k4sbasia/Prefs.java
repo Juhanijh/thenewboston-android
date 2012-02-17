@@ -12,5 +12,4 @@ public class Prefs extends PreferenceActivity {
 		addPreferencesFromResource(R.xml.perfs);
 	}
 
-	
 }

@@ -8,44 +8,44 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class TheNewBostonActivity extends Activity {
-	
+
 	int counter;
 	Button add, sub, menu;
 	TextView display;
-	
-    /** Called when the activity is first created. */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        
-        counter = 0;
-        add = (Button) findViewById(R.id.bAdd);
-        sub = (Button) findViewById(R.id.bSub);
-        menu = (Button) findViewById(R.id.bMenu);
-        
-        display = (TextView) findViewById(R.id.tvTotal);
-        
-        add.setOnClickListener(new View.OnClickListener() {
-			
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+
+		counter = 0;
+		add = (Button) findViewById(R.id.bAdd);
+		sub = (Button) findViewById(R.id.bSub);
+		menu = (Button) findViewById(R.id.bMenu);
+
+		display = (TextView) findViewById(R.id.tvTotal);
+
+		add.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
-			display.setText("Your total is: " + ++counter);
-				
+				display.setText("Your total is: " + ++counter);
+
 			}
 		});
-        
-        sub.setOnClickListener(new View.OnClickListener() {
-			
+
+		sub.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
-			display.setText("Your total is: " + --counter);
-				
+				display.setText("Your total is: " + --counter);
+
 			}
 		});
-        
-        menu.setOnClickListener(new View.OnClickListener() {
-			
+
+		menu.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -53,7 +53,7 @@ public class TheNewBostonActivity extends Activity {
 				startActivity(openStartingPoint);
 			}
 		});
-     }
+	}
 
 	@Override
 	protected void onPause() {
@@ -61,6 +61,5 @@ public class TheNewBostonActivity extends Activity {
 		super.onPause();
 		finish();
 	}
-    
-    
+
 }

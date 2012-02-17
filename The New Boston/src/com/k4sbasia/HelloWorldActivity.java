@@ -13,5 +13,4 @@ public class HelloWorldActivity extends Activity {
 		setTitle("And the title has been set");
 	}
 
-	
 }
