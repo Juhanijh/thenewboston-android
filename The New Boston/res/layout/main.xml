@@ -5,39 +5,40 @@
     android:orientation="vertical" >
 
     <TextView
+        android:id="@+id/tvTotal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Your total is: 0" 
-        android:textSize="45dp"
         android:layout_gravity="center"
-        android:id="@+id/tvTotal"/>
-    
+        android:text="Your total is: 0"
+        android:textSize="45dp" />
+
     <Button
+        android:id="@+id/bAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/customb"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/bSub"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Add one"
         android:layout_gravity="center"
-        android:textSize="20dp"
-        android:id="@+id/bAdd"/>
-    
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
         android:text="Substract one"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:id="@+id/bSub"/>
+        android:textSize="20dp" />
 
     <AnalogClock
         android:id="@+id/analogClock1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-     <Button
+    <Button
+        android:id="@+id/bMenu"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Back to Menu"
         android:layout_gravity="center"
-        android:textSize="20dp"
-        android:id="@+id/bMenu"/>
+        android:text="Back to Menu"
+        android:textSize="20dp" />
+
 </LinearLayout>

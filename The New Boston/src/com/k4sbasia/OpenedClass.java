@@ -2,7 +2,9 @@ package com.k4sbasia;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -26,9 +28,18 @@ public class OpenedClass extends Activity implements OnClickListener,
 		setContentView(R.layout.send);
 		initialize();
 
-//		Bundle gotBasket = getIntent().getExtras();
-//		gotBread = gotBasket.getString("key");
-//		question.setText(gotBread);
+		SharedPreferences getData = PreferenceManager
+				.getDefaultSharedPreferences(getBaseContext());
+		String et = getData.getString("name", "Lukasz is...");
+		String values = getData.getString("list", "4");
+
+		if (values.contentEquals("1")) {
+			question.setText(et);
+		}
+
+		// Bundle gotBasket = getIntent().getExtras();
+		// gotBread = gotBasket.getString("key");
+		// question.setText(gotBread);
 	}
 
 	private void initialize() {
