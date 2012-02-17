@@ -63,6 +63,13 @@ public class GFXSurface extends Activity implements OnTouchListener {
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
+
+		try {
+			Thread.sleep(50);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
 		x = event.getX();
 		y = event.getY();
 
@@ -140,8 +147,8 @@ public class GFXSurface extends Activity implements OnTouchListener {
 
 				if (fY != 0 && fY != 0) {
 
-					canvas.drawBitmap(test, fX - (test.getWidth() / 2) - aniX, fY
-							- (test.getHeight() / 2) - aniY, null);
+					canvas.drawBitmap(test, fX - (test.getWidth() / 2) - aniX,
+							fY - (test.getHeight() / 2) - aniY, null);
 
 					canvas.drawBitmap(a, fX - (a.getWidth() / 2),
 							fY - (a.getHeight() / 2), null);
