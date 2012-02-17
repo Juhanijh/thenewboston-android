@@ -41,9 +41,9 @@ public class Menu extends ListActivity {
 		super.onCreate(savedInstanceState);
 
 		// full screen
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
+		// getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+		// WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		setListAdapter(new ArrayAdapter<String>(Menu.this,
 				android.R.layout.simple_list_item_1, classes));
@@ -77,7 +77,11 @@ public class Menu extends ListActivity {
 		case R.id.exit:
 			finish();
 			break;
+
+		default:
+			return super.onOptionsItemSelected(item);
 		}
+
 		return false;
 	}
 
