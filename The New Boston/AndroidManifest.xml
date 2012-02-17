@@ -51,9 +51,8 @@
         </activity>
         <activity
             android:name=".HelloWorldActivity"
-            android:label="@string/app_name" 
-            android:icon="@drawable/a">
-            
+            android:icon="@drawable/a"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="com.k4sbasia.HELLOWORLDACTIVITY" />
 
@@ -99,6 +98,10 @@
         <activity
             android:name=".GFX"
             android:label="Grafix"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".GFXSurface"
             android:screenOrientation="portrait" >
         </activity>
     </application>
