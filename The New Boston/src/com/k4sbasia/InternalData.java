@@ -6,8 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -80,7 +82,38 @@ public class InternalData extends Activity implements OnClickListener {
 			// }
 			break;
 		case R.id.bLoad:
+			new LoadSomeStuff().execute(FILENAME);
+			break;
+		}
+	}
+
+	public class LoadSomeStuff extends AsyncTask<String, Integer, String> {
+
+		ProgressDialog dialog;
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			dialog = new ProgressDialog(InternalData.this);
+			dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+			dialog.setMax(100);
+			dialog.show();
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
 			String collected = null;
+
+			for (int i = 0; i < 20; i++) {
+				publishProgress(5);
+				try {
+					Thread.sleep(88);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+			dialog.dismiss();
+
 			try {
 				fis = openFileInput(FILENAME);
 				byte[] dataArray = new byte[fis.available()];
@@ -94,13 +127,25 @@ public class InternalData extends Activity implements OnClickListener {
 			} finally {
 				try {
 					fis.close();
-					dataResult.setText(collected);
+					return collected;
+
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
+			return null;
+		}
 
-			break;
+		@Override
+		protected void onProgressUpdate(Integer... values) {
+			super.onProgressUpdate(values);
+			dialog.incrementProgressBy(values[0]);
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			dataResult.setText(result);
 		}
 	}
+
 }
