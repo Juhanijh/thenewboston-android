@@ -15,7 +15,7 @@ public class Menu extends ListActivity {
 
 	String classes[] = { "TheNewBostonActivity", "Text", "HelloWorldActivity",
 			"Email", "Camera", "Data", "GFX", "Splash", "GFXSurface",
-			"SoundStuff", "Slider", "Tabs", "Browser", "Flipper" };
+			"SoundStuff", "Slider", "Tabs", "Browser", "Flipper", "SharedPrefs" };
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {

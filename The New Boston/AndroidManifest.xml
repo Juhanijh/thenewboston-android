@@ -131,6 +131,11 @@
             android:label="Flipper"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".SharedPrefs"
+            android:label="Shared Preferences"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
