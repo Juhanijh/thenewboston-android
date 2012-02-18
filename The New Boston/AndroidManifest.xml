@@ -110,6 +110,16 @@
             android:label="Sound Stuff"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".Slider"
+            android:label="Slider"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Tabs"
+            android:label="Tabs"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
