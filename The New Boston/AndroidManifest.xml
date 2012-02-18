@@ -136,6 +136,11 @@
             android:label="Shared Preferences"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".InternalData"
+            android:label="Internal Data"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
