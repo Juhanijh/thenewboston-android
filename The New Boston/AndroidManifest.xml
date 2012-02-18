@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:debuggable="true"
@@ -118,6 +119,11 @@
         <activity
             android:name=".Tabs"
             android:label="Tabs"
+            android:screenOrientation="portrait" >
+        </activity>
+            <activity
+            android:name=".Browser"
+            android:label="Simple Browser"
             android:screenOrientation="portrait" >
         </activity>
     </application>
