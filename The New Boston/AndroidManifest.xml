@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:debuggable="true"
@@ -121,9 +121,14 @@
             android:label="Tabs"
             android:screenOrientation="portrait" >
         </activity>
-            <activity
+        <activity
             android:name=".Browser"
             android:label="Simple Browser"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Flipper"
+            android:label="Flipper"
             android:screenOrientation="portrait" >
         </activity>
     </application>
