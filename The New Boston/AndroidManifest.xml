@@ -156,6 +156,11 @@
             android:name=".SQLView"
             android:label="SQView Example"
             android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.k4sbasia.SQLVIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 
