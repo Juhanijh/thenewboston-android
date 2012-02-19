@@ -1,0 +1,6 @@
+-generate debug google maps key:
+$ keytool -list -alias androiddebugkey -keystore /Users/lszwed/.android/debug.keystore -storepass android -keypass android
+
+-google maps API Key Signup
+http://code.google.com/android/add-ons/google-apis/maps-api-signup.html
+
