@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:debuggable="true"
@@ -145,6 +145,16 @@
         <activity
             android:name=".ExternalData"
             android:label="External Data"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".SQLiteExample"
+            android:label="SQLite Example"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".SQLView"
+            android:label="SQView Example"
             android:screenOrientation="portrait" >
         </activity>
     </application>
