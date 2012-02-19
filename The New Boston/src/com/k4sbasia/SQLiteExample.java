@@ -30,12 +30,17 @@ public class SQLiteExample extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.bSQLUpdate:
+			String name = sqlName.getText().toString();
+			String hostness = sqlHotness.getText().toString();
 
+			HotOrNot entry = new HotOrNot(SQLiteExample.this);
+			entry.open();
+			entry.createEntry(name, hostness);
+			entry.close();
 			break;
 
 		case R.id.bSQLopenView:
 			break;
 		}
 	}
-
 }

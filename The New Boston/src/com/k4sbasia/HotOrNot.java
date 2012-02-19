@@ -1,5 +1,6 @@
 package com.k4sbasia;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -22,6 +23,16 @@ public class HotOrNot {
 		ourContext = c;
 	}
 
+	public HotOrNot open() {
+		ourHelper = new DbHelper(ourContext);
+		ourDatabase = ourHelper.getWritableDatabase();
+		return this;
+	}
+
+	public void close() {
+		ourHelper.close();
+	}
+
 	private static class DbHelper extends SQLiteOpenHelper {
 
 		public DbHelper(Context context) {
@@ -37,9 +48,15 @@ public class HotOrNot {
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			// TODO Auto-generated method stub
-
+			db.execSQL("DROP TABLE IF EXIST " + DATABASE_TABLE);
+			onCreate(db);
 		}
+	}
 
+	public long createEntry(String name, String hostness) {
+		ContentValues cv = new ContentValues();
+		cv.put(KEY_NAME, name);
+		cv.put(KEY_HOTNESS, hostness);
+		return ourDatabase.insert(DATABASE_TABLE, null, cv);
 	}
 }
