@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
+import com.google.android.maps.OverlayItem;
 
 public class Main extends MapActivity {
 
@@ -27,6 +29,8 @@ public class Main extends MapActivity {
 	MyLocationOverlay compass;
 	MapController controller;
 	int x, y;
+	Drawable d;
+	List<Overlay> overlayList;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,7 @@ public class Main extends MapActivity {
 		map.setBuiltInZoomControls(true);
 
 		Touchy t = new Touchy();
-		List<Overlay> overlayList = map.getOverlays();
+		overlayList = map.getOverlays();
 		overlayList.add(t);
 
 		compass = new MyLocationOverlay(Main.this, map);
@@ -49,6 +53,8 @@ public class Main extends MapActivity {
 				(int) (1E6 * -6.296875));
 		controller.animateTo(point);
 		controller.setZoom(20);
+
+		d = getResources().getDrawable(R.drawable.pinpoint);
 
 	}
 
@@ -96,7 +102,13 @@ public class Main extends MapActivity {
 							@Override
 							public void onClick(DialogInterface dialog,
 									int which) {
-								// TODO Auto-generated method stub
+								OverlayItem overlayItem = new OverlayItem(
+										touchedPoint, "What's Up",
+										"And some more info");
+								CustomPinpoint customPinpoint = new CustomPinpoint(
+										d, Main.this);
+								customPinpoint.insertPinpoint(overlayItem);
+								overlayList.add(customPinpoint);
 
 							}
 						});
@@ -136,14 +148,18 @@ public class Main extends MapActivity {
 							}
 						});
 
-				alert.setButton3("poption 3",
+				alert.setButton3("Toogle View",
 						new DialogInterface.OnClickListener() {
 
 							@Override
 							public void onClick(DialogInterface dialog,
 									int which) {
-								// TODO Auto-generated method stub
 
+								if (map.isSatellite()) {
+									map.setSatellite(false);
+								} else {
+									map.setSatellite(true);
+								}
 							}
 						});
 
