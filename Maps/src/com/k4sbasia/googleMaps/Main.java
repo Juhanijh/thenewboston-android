@@ -1,11 +1,16 @@
 package com.k4sbasia.googleMaps;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -21,6 +26,7 @@ public class Main extends MapActivity {
 	long stop;
 	MyLocationOverlay compass;
 	MapController controller;
+	int x, y;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -65,9 +71,15 @@ public class Main extends MapActivity {
 	}
 
 	class Touchy extends Overlay {
+
+		GeoPoint touchedPoint;
+
 		public boolean onTouchEvent(MotionEvent e, MapView m) {
 			if (e.getAction() == MotionEvent.ACTION_DOWN) {
 				start = e.getEventTime();
+				x = (int) e.getX();
+				y = (int) e.getY();
+				touchedPoint = map.getProjection().fromPixels(x, y);
 			}
 			if (e.getAction() == MotionEvent.ACTION_UP) {
 				stop = e.getEventTime();
@@ -91,12 +103,36 @@ public class Main extends MapActivity {
 
 				alert.setButton2("get address",
 						new DialogInterface.OnClickListener() {
+							String display = "";
 
 							@Override
 							public void onClick(DialogInterface dialog,
 									int which) {
-								// TODO Auto-generated method stub
 
+								Geocoder geocoder = new Geocoder(
+										getBaseContext(), Locale.getDefault());
+								try {
+									List<Address> address = geocoder.getFromLocation(
+											touchedPoint.getLatitudeE6() / 1E6,
+											touchedPoint.getLongitudeE6() / 1E6,
+											1);
+
+									if (address.size() > 0) {
+										for (int i = 0; i < address.get(0)
+												.getMaxAddressLineIndex(); i++) {
+
+											display += address.get(0)
+													.getAddressLine(i) + "\n";
+										}
+										Toast.makeText(getBaseContext(),
+												display, Toast.LENGTH_LONG)
+												.show();
+									}
+								} catch (IOException ex) {
+									ex.printStackTrace();
+								} finally {
+
+								}
 							}
 						});
 
