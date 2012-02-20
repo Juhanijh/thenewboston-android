@@ -7,9 +7,11 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MotionEvent;
 
+import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
+import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 
 public class Main extends MapActivity {
@@ -17,7 +19,8 @@ public class Main extends MapActivity {
 	MapView map;
 	long start;
 	long stop;
-	MapController mapController;
+	MyLocationOverlay compass;
+	MapController controller;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,29 @@ public class Main extends MapActivity {
 		Touchy t = new Touchy();
 		List<Overlay> overlayList = map.getOverlays();
 		overlayList.add(t);
+
+		compass = new MyLocationOverlay(Main.this, map);
+		overlayList.add(compass);
+		controller = map.getController();
+
+		// GeoPoint point = new GeoPoint(51643234, 7848593);
+		GeoPoint point = new GeoPoint((int) (1E6 * 53.344435),
+				(int) (1E6 * -6.296875));
+		controller.animateTo(point);
+		controller.setZoom(20);
+
+	}
+
+	@Override
+	protected void onPause() {
+		compass.disableCompass();
+		super.onPause();
+	}
+
+	@Override
+	protected void onResume() {
+		compass.enableCompass();
+		super.onResume();
 	}
 
 	@Override
