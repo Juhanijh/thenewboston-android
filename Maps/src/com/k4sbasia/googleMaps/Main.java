@@ -4,12 +4,20 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.http.util.LangUtils;
+
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
+import android.location.Criteria;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.MotionEvent;
 import android.widget.Toast;
 
@@ -21,7 +29,7 @@ import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
-public class Main extends MapActivity {
+public class Main extends MapActivity implements LocationListener {
 
 	MapView map;
 	long start;
@@ -31,6 +39,11 @@ public class Main extends MapActivity {
 	int x, y;
 	Drawable d;
 	List<Overlay> overlayList;
+	LocationManager lm;
+	String towers;
+
+	int lat = 0;
+	int longi = 0;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -47,14 +60,38 @@ public class Main extends MapActivity {
 		compass = new MyLocationOverlay(Main.this, map);
 		overlayList.add(compass);
 		controller = map.getController();
-
-		// GeoPoint point = new GeoPoint(51643234, 7848593);
-		GeoPoint point = new GeoPoint((int) (1E6 * 53.344435),
-				(int) (1E6 * -6.296875));
-		controller.animateTo(point);
-		controller.setZoom(20);
-
 		d = getResources().getDrawable(R.drawable.pinpoint);
+
+		lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		Criteria crit = new Criteria();
+		towers = lm.getBestProvider(crit, false);
+		Location location = lm.getLastKnownLocation(towers);
+
+		if (location != null) {
+			lat = (int) (location.getLatitude() * 1E6);
+			longi = (int) (location.getLongitude() * 1E6);
+
+			GeoPoint ourLocation = new GeoPoint(lat, longi);
+			OverlayItem overlayItem = new OverlayItem(ourLocation, "What's Up",
+					"And some more info");
+			CustomPinpoint customPinpoint = new CustomPinpoint(d, Main.this);
+			customPinpoint.insertPinpoint(overlayItem);
+			overlayList.add(customPinpoint);
+
+			controller.animateTo(ourLocation);
+			controller.setZoom(15);
+			
+		} else {
+			Toast.makeText(Main.this, "Couldn't get provider, zoom to home",
+					Toast.LENGTH_SHORT).show();
+			// GeoPoint point = new GeoPoint(51643234, 7848593);
+			GeoPoint point = new GeoPoint((int) (1E6 * 53.344435),
+					(int) (1E6 * -6.296875));
+			controller.animateTo(point);
+			controller.setZoom(20);
+		}
+
+		// Placing pingpoint at location
 
 	}
 
@@ -62,12 +99,14 @@ public class Main extends MapActivity {
 	protected void onPause() {
 		compass.disableCompass();
 		super.onPause();
+		lm.removeUpdates(this);
 	}
 
 	@Override
 	protected void onResume() {
 		compass.enableCompass();
 		super.onResume();
+		lm.requestLocationUpdates(towers, 500, 1, this);
 	}
 
 	@Override
@@ -169,5 +208,36 @@ public class Main extends MapActivity {
 
 			return false;
 		}
+	}
+
+	@Override
+	public void onLocationChanged(Location location) {
+		lat = (int) (location.getLatitude() * 1E6);
+		longi = (int) (location.getLongitude() * 1E6);
+		GeoPoint ourLocation = new GeoPoint(lat, longi);
+		OverlayItem overlayItem = new OverlayItem(ourLocation, "What's Up",
+				"And some more info");
+		CustomPinpoint customPinpoint = new CustomPinpoint(d, Main.this);
+		customPinpoint.insertPinpoint(overlayItem);
+		overlayList.add(customPinpoint);
+
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+
 	}
 }
