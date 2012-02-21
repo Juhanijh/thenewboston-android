@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -16,7 +14,8 @@ public class Menu extends ListActivity {
 	String classes[] = { "TheNewBostonActivity", "Text", "HelloWorldActivity",
 			"Email", "Camera", "Data", "GFX", "Splash", "GFXSurface",
 			"SoundStuff", "Slider", "Tabs", "Browser", "Flipper",
-			"SharedPrefs", "InternalData", "ExternalData", "SQLiteExample", "Accelerate" };
+			"SharedPrefs", "InternalData", "ExternalData", "SQLiteExample",
+			"Accelerate", "HttpExample" };
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {

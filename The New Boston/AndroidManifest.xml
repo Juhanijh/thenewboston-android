@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:debuggable="true"
@@ -165,6 +166,11 @@
         <activity
             android:name=".Accelerate"
             android:label="Accelerate Example"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".HttpExample"
+            android:label="Http Example"
             android:screenOrientation="portrait" >
         </activity>
     </application>
